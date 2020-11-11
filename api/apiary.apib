@@ -1,0 +1,111 @@
+FORMAT: 1A
+HOST: https://dictionary.iachieved.it/
+
+# Dictionary API
+
+Below is a set of APIs that have the following functions:
+* Create a dictionary
+* Delete a dictionary
+* Create or modify a key value pair
+
+For each API endpoint, please add a set of test cases as per the directions
+that were emailed to you. Clicking on each API will display valid inputs,
+parameters, and HTTP response status codes and response body for each API.
+
+All calls require Basic Authentication.
+
+## Dictionary [/dictionary]
+
+### Create a New Dictionary [POST]
+
+This API call creates an empty dictionary and returns a dictionary id.
+
++ Request (application/json)
+
+        {}
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "id":"dictionary-id"
+            }
+            
++ Response 401
+            
+### Delete a Dictionary [DELETE /dictionary/{id}]
+
+This API call deletes a dictionary given a dictionary id.
+
++ Request (application/json)     
+
++ Response 200 (application/json)
+
++ Response 401 (text/plain)
+
++ Response 404 (application/json)
+        
+### Get all Keys [GET /dictionary/{id}/keys]
+
+Returns all the keys in the dictionary.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "count": n,
+            "keys": [
+                "key1",
+                "key2",
+                ...,
+                "keyn"
+            ]
+        }
+        
++ Response 401 (text/plain)
+    
++ Response 404 (application/json)
+        
+### Create or Modify a Key-Value Pair [POST /dictionary/{id}/keys/{key}]
+
+This API call creates or modifies a key/value pair given an existing dictionary id.
+
++ Request (application/json)
+
+    + Body
+
+            {
+              "value":"VALUE"
+            }
+        
++ Response 201 (application/json)
+
++ Response 401 (text/plain)
+
+### Get a Value [GET /dictionary/{id}/keys/{key}]
+
+Given a key, returns a value.
+
++ Request (application/json)
+        
++ Response 200 (application/json)
+
+        {
+            "value":"value"
+        }
+
++ Response 401 (text/plain)
+
++ Response 404 (application/json)
+
+### Delete a Key-Value Pair [DELETE /dictionary/{id}/keys/{key}]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
++ Response 401 (text/plain)
+
++ Response 404 (application/json)
