@@ -1,0 +1,18 @@
+version:  "3.8"
+
+services:
+  c1:
+    container_name:   c1
+    build:  api
+    env_file:  api/c1.env
+  c2:
+    container_name:  c2
+    build:  api
+    env_file:  api/c2.env
+  redis:
+    build:  redis
+  nginx:
+    build:  nginx
+    ports:
+      - "80:80"
+    depends_on: [c1, c2]

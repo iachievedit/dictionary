@@ -8,6 +8,6 @@ COPY .  /opt/iachievedit/apps/dictionary-api
 
 RUN bundle install
 
-EXPOSE $PORT
+EXPOSE 9000
 
-CMD bundle exec rackup --host 0.0.0.0 -p $PORT
+CMD bundle exec rackup --host 0.0.0.0 -p 9000
