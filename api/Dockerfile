@@ -2,12 +2,16 @@ FROM ruby:2.7
 
 RUN apt update
 RUN apt install -y bundler
+RUN apt install -y nginx
 
-WORKDIR /opt/iachievedit/apps/dictionary-api
-COPY .  /opt/iachievedit/apps/dictionary-api
 
+COPY app /apps/dictionary-api
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY start.sh /start.sh
+
+WORKDIR /apps/dictionary-api
 RUN bundle install
 
-EXPOSE 9000
+EXPOSE 80
 
-CMD bundle exec rackup --host 0.0.0.0 -p 9000
+CMD ["/start.sh"]

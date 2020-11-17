@@ -1,16 +1,9 @@
 version:  "3.8"
 
 services:
-  c1:
-    container_name:   c1
+  api:
     build:  api
-  c2:
-    container_name:  c2
-    build:  api
-  redis:
-    build:  redis
-  nginx:
-    build:  nginx
     ports:
       - "80:80"
-    depends_on: [c1, c2]
+  redis:
+    build:  redis
